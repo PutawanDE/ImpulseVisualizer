@@ -1,5 +1,6 @@
 let fft;
 let mic;
+var audioContext;
 const size = 512;
 
 let cols, rows;
@@ -12,6 +13,7 @@ function setup() {
   mic = new p5.AudioIn();
   mic.start();
   fft = new p5.FFT(0.9, 512);
+  fft.setInput(mic);
   cols = 20;
   rows = 20;
   w = 40;
@@ -62,4 +64,5 @@ function draw() {
     vertex(x, y);
   }
   endShape();
+  console.log(frameRate());
 }
